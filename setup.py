@@ -8,7 +8,7 @@ setup(
     description='A high precision floating-point arithmetic module',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    # url='https://github.com/yourusername/high-precision-float',
+    url='https://github.com/zprolab/hpf',
     packages=find_packages(),
     classifiers=[
         'Development Status :: 4 - Beta',
