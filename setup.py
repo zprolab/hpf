@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='hpf',
-    version='0.3.0',
+    version='0.3.5',
     author='Chenyun Zhang',
     author_email='"Chenyun Z." <zcy@hi-zcy.com>',
     description='A high precision floating-point arithmetic module',
