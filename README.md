@@ -24,14 +24,16 @@ pip install hpf
 
 ### From Source
 
-1. Use Source
+1. Use Source:
+
 Simply include the `hpf.py` file in your project and import the class:
 
 ```python
 from hpf import HighPrecisionFloat  # or 'from hpf import hpf, HPF(both OK)'
 ```
 
-2. Complie USLF
+2. Complie Yourself:
+
 There are 2 methods: 
  - Use setup.py
 ```bash
@@ -125,13 +127,10 @@ print(str(div1/div2))
 MIT License - See [LICENSE](LICENSE) file for details.
 
 ## Author
-Chenyun Z.  
-[Project Website](https://hi-zcy.com)  
+Chenyun Z. 
 Created: Oct 27 2024  
 Last Updated: Oct 27 2024
 
----
-
-> **Warning**  
-> Do NOT modify the class header documentation block. The implementation relies on specific internal formatting.
-
+## Something...
+PyPI is a great invention to make package-managing easier!
+GitHub Action is also a great invention to let we needn't to write `python -m build`!
