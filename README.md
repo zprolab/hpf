@@ -23,10 +23,31 @@ pip install hpf
 ```
 
 ### From Source
+
+1. Use Source
 Simply include the `hpf.py` file in your project and import the class:
 
 ```python
 from hpf import HighPrecisionFloat  # or 'from hpf import hpf, HPF(both OK)'
+```
+
+2. Complie USLF
+There are 2 methods: 
+ - Use setup.py
+```bash
+git clone https://github.com/zprolab/hpf
+cd hpf 
+pip install setuptools
+setup.py install # Auto Install!
+```
+ - Use build (recommend)
+```bash
+git clone https://github.com/zprolab/hpf
+cd hpf 
+rm -rf ./dist/*
+pip install setuptools build
+python -m build # Auto Build!
+pip install dist/*.whl
 ```
 
 ## Usage
