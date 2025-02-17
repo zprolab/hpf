@@ -46,7 +46,7 @@ setup.py install # Auto Install!
 ```bash
 git clone https://github.com/zprolab/hpf
 cd hpf 
-rm -rf ./dist/*
+rm -rf ./dist
 pip install setuptools build
 python -m build # Auto Build!
 pip install dist/*.whl
@@ -54,7 +54,33 @@ pip install dist/*.whl
 
 ## Usage
 
+### Test
+```bash
+python -m hpf
+```
+
 ### Initialization
+```python
+from hpf import HighPrecisionFloat
+```
+
+### Abbr.
+```python
+from hpf import HighPrecisionFloat as hpf
+```
+or
+```python
+from hpf import HighPrecisionFloat as HPF
+```
+or
+```python
+from hpf import hpf
+```
+or
+```python
+from hpf import HPF
+```
+
 ```python
 a = HighPrecisionFloat("3.14159265358979323846", precision=25)
 b = HighPrecisionFloat(-42.75)
