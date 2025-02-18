@@ -32,7 +32,7 @@ Simply include the `hpf.py` file in your project and import the class:
 from hpf import HighPrecisionFloat  # or 'from hpf import hpf, HPF(both OK)'
 ```
 
-2. Complie Yourself:
+2. Compile Yourself:
 
 There are 2 methods: 
  - Use setup.py
@@ -64,7 +64,7 @@ python -m hpf
 from hpf import HighPrecisionFloat
 ```
 
-### Abbr.
+### Abbreviations
 ```python
 from hpf import HighPrecisionFloat as hpf
 ```
@@ -155,8 +155,9 @@ MIT License - See [LICENSE](LICENSE) file for details.
 ## Author
 Chenyun Z. 
 Created: Oct 27 2024  
-Last Updated: Oct 27 2024
+Last Updated: Feb 18 2025
 
 ## Something...
 PyPI is a great invention to make package-managing easier!
-GitHub Action is also a great invention to let we needn't to write `python -m build`!
+
+GitHub Action is also a great invention to let we needn't to write `python -m build` again and again!
