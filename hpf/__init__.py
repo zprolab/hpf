@@ -7,7 +7,7 @@
                                   
 @file    hpf.py
 @info    Pure self-defined High Precision Float Platfrom
-@auth    Chenyun Z. 
+@auth    Chenyun Z.(hi-zcy)
 @auth    hi-zcy.com
 @create  Oct. 27 2024
 @license MIT License
@@ -144,10 +144,6 @@ class HighPrecisionFloat:
         return int_sum, frac_sum
 
     def _sub_abs(self, other):
-        """
-        This isn't a useful function.
-        The method __sub__ used the function "_add_abs".
-        """
         a_int, a_frac, b_int, b_frac = self._align_parts(other)
         borrow = 0
         frac_diff = []
