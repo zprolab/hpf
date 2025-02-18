@@ -135,9 +135,9 @@ print(str(div1/div2))
 - `_mul_abs/_div_abs`: Internal absolute multiplication/division
 - `_abs_greater`: Absolute value comparison
 
-### Operator Overloads
+### (TODO) Operator Overloads
 - `+`, `-`, `*`, `/`, `//`
-- `==`, `!=`, `<`, `<=`, `>`, `>=`
+- `==`, `!=`, (TODO)`<`, (TODO)`<=`, (TODO)`>`, (TODO)`>=`
 
 ### Utility Methods
 - `__str__/__repr__`: String representation
