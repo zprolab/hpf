@@ -1,4 +1,4 @@
-r"""
+"""
  _____          _   _ ____  _____ 
 |__  /         | | | |  _ \|  ___|
   / /   _____  | |_| | |_) | |_   
@@ -7,7 +7,7 @@ r"""
                                   
 @file    hpf.py
 @info    Pure self-defined High Precision Float Platfrom
-@auth    Chenyun Z.(hi-zcy)
+@auth    Chenyun Z. 
 @auth    hi-zcy.com
 @create  Oct. 27 2024
 @license MIT License
@@ -36,6 +36,11 @@ class HighPrecisionFloat:
                 self.int_part, self.frac_part = value.split('.')
             else:
                 self.int_part, self.frac_part = value, '0'
+        elif isinstance(value, HighPrecisionFloat):
+            self.precision = value.precision
+            self.negative = value.precision
+            self.int_part = value.int_part
+            self.frac_part = value.frac_part
         else:
             raise ValueError(f"Unsupported value type: {type(value)}.")
         self.int_part = self.int_part.lstrip('0') or '0'
@@ -103,12 +108,6 @@ class HighPrecisionFloat:
 
     def __floordiv__(self, other):
         return HighPrecisionFloat(self.__truediv__(other).int_part)
-
-    def __del__(self):
-        del self.frac_part
-        del self.int_part
-
-        del self.precision
 
     def _add_abs(self, other):
 
@@ -178,7 +177,7 @@ class HighPrecisionFloat:
         int_diff = ''.join(int_diff).lstrip('0') or '0'
 
         return int_diff, frac_diff
-
+    
     def _mul_abs(self, other):
 
         a = self.int_part + self.frac_part
@@ -284,39 +283,66 @@ class HighPrecisionFloat:
         self.negative = False if self.negative else True
 
     def __eq__(self, other):
-        if not isinstance(other, HighPrecisionFloat):
-            other = HighPrecisionFloat(other)
-        return (self.int_part, self.frac_part) == (
-            other.int_part,
-            other.frac_part,
-        ) and self.negative == other.negative
+        """
+        Equality comparison (==)
+    
+        Args:
+            other: Value to compare with
+        
+        Returns:
+            bool: True if values are equal, False otherwise
+        """
+        other = HighPrecisionFloat(other)
+        return self._compare_magnitude(self, other) == 0
 
     def __ne__(self, other):
-        return not self == other
+        """
+        Inequality comparison (!=)
+    
+        Args:
+            other: Value to compare with
+        
+        Returns:
+            bool: True if values are not equal, False otherwise
+        """
+        return not self.__eq__(other)
 
-    def __lt__(self, other):
-        if not isinstance(other, HighPrecisionFloat):
-            other = HighPrecisionFloat(other)
-        if self.negative != other.negative:
-            return self.negative
-        if self.negative:
-            return not self.__gt__(other)
-        return self._compare(other) < 0
-
-    def __le__(self, other):
-        return self < other or self == other
-
-    def __gt__(self, other):
-        if not isinstance(other, HighPrecisionFloat):
-            other = HighPrecisionFloat(other)
-        if self.negative != other.negative:
-            return not self.negative
-        if self.negative:
-            return not self.__lt__(other)
-        return self._compare(other) > 0
-
-    def __ge__(self, other):
-        return self > other or self == other
+    def _compare_magnitude(self, other):
+        """
+        Compare the absolute values of two HighPrecisionFloat numbers.
+    
+        Args:
+            other: Value to compare with
+            
+        Returns:
+            int: -1 if self < other, 0 if self == other, 1 if self > other
+        """
+        # Compare integer parts
+        if len(self.int_part) != len(other.int_part):
+            return -1 if len(self.int_part) < len(other.int_part) else 1
+    
+        if self.int_part != other.int_part:
+            idx = 0
+            for digit in self.int_part:
+                if digit < other.int_part[idx]:
+                    return -1
+                elif digit > other.int_part[idx]:
+                    return 1
+                idx += 1
+    
+        # Compare fractional parts
+        max_frac_len = max(len(self.frac_part), len(other.frac_part))
+        self_frac = self.frac_part.ljust(max_frac_len, '0')
+        other_frac = other.frac_part.ljust(max_frac_len, '0')
+        
+        idx = 0
+        for digit in self_frac:
+            if digit < other_frac[idx]:
+                return -1
+            elif digit > other_frac[idx]:
+                return 1
+        
+        return 0
 
 hpf = HighPrecisionFloat
 HPF = HighPrecisionFloat
